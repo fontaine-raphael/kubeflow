@@ -1,0 +1,13 @@
+name: Pre-processing
+description: Pre-processing of data. Application of cleaning and transformation rules.
+inputs:
+    - {name: project, type: GCPProjectID, description: 'Destination project of files. Billing project.'}
+    - {name: staging_bucket, type: GCSPath, description: 'Bucket where sharded files are stored.'}
+implementation:
+    container:
+        image: gcr.io/kubeflow-2020/yellow-taxis-nyc/pre-processing:latest
+        command: [python3, /src/pre_processing.py]
+        args: [
+            --project, {inputValue: project},
+            --staging-bucket, {inputPath: staging_bucket}
+        ]

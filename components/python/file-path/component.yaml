@@ -1,0 +1,17 @@
+name: Do dummy work
+description: Performs some dummy work
+inputs:
+    - {name: input_path, type: GcsPath, description: 'Local or GCS path to the input file.'}
+    - {name: parameter, type: Integer, default: '100', description: 'N lines file output.'}  # The default values must be specs as YAML strings.
+outputs:
+    - {name: output_path, description: 'Local or GCS path to the output file.'}
+implementation:
+    container:
+        image: gcr.io/kubeflow-2020/file-path:v1.0
+        command: [python, /pipelines/components/src/main.py]
+        args: [
+            --input1-path, {inputValue: input_path},
+            --param1, {inputValue: parameter},
+
+            --output1-path, {outputPath: output_path},
+        ]

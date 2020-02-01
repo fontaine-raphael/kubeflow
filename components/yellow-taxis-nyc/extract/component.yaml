@@ -1,0 +1,23 @@
+name: Extract trips
+description: Extract a period of NYC Yellow Taxi trips to a destination bucket.
+inputs:
+    - {name: project, type: GCPProjectID, description: 'Destination project of table and files exported. Billing project.'}
+    - {name: dataset, type: String, description: 'Dataset ouput.'}
+    - {name: bucket, type: GCSPath, description: 'Desired bucket for exported files.'}
+    - {name: start_date, type: String, default: '2015-01-01', description: 'Start date for pickup period.'}
+    - {name: end_date, type: String, default: '2015-06-30', description: 'End date for pickup period.'}
+outputs:
+    - {name: staging_bucket, type: GCSPath, description: 'Bucket where sharded files are stored.'}
+implementation:
+    container:
+        image: gcr.io/kubeflow-2020/yellow-taxis-nyc/extract:latest
+        command: [python3, /src/extract.py]
+        args: [
+            --project, {inputValue: project},
+            --dataset, {inputValue: dataset},
+            --bucket, {inputValue: bucket},
+            --start-date, {inputValue: start_date},
+            --end-date, {inputValue: end_date},
+            # Output
+            --staging-bucket, {outputPath: staging_bucket}
+        ]

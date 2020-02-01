@@ -1,0 +1,4 @@
+.DS_Store
+.vscode
+kf-venv
+**/__pycache__
