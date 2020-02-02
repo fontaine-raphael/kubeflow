@@ -12,12 +12,12 @@ extract_op = comp.load_component_from_file(os.path.join(extract_path, 'component
 preprocessing_op = comp.load_component_from_file(os.path.join(preprocessing_path, 'component.yaml'))
 
 @dsl.pipeline(name='NYC Yellow Taxi Fare Predict', description='Pipeline to predict the fare amount of NYC Yellow Cab.')
-def my_pipeline(
+def nyc_taxi_pipeline(
     project='kubeflow-2020',
     dataset='kubeflow',
     bucket='gs://kubeflow-2020-nyc',
-    start_date='2014-01-01',
-    end_date='2014-01-15'
+    start_date='2015-01-01',
+    end_date='2015-01-01'
 ):
     extract = extract_op(
         project=project,
@@ -33,7 +33,7 @@ def my_pipeline(
     ).apply(gcp.use_gcp_secret('user-gcp-sa'))
 
 # Compile
-pipeline_func = my_pipeline
+pipeline_func = nyc_taxi_pipeline
 pipeline_filename = pipeline_func.__name__ + ".tar.gz"
 compiler.Compiler().compile(pipeline_func, pipeline_filename)
 print(pipeline_filename)

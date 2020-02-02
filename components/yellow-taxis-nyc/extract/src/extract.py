@@ -10,9 +10,9 @@ parser = argparse.ArgumentParser(description='Saves the result of a query to a t
 parser.add_argument('--project', type=str, help='Destination project of table and files exported. Billing project.')
 parser.add_argument('--dataset', type=str, default=100, help='Dataset ouput.')
 parser.add_argument('--bucket', type=str, help='Desired bucket for exported files.')
-parser.add_argument('--start-date', type=str, help='Start date for pickup period.')
-parser.add_argument('--end-date', type=str, help='End date for pickup period.')
-
+parser.add_argument('--start-date', type=str, help='Start date for boarding taxi rides.')
+parser.add_argument('--end-date', type=str, help='End date for boarding taxi rides.')
+# Output
 parser.add_argument('--staging-bucket', type=str, help='Staging bucket.')
 args = parser.parse_args()
 
@@ -47,7 +47,7 @@ query_job_config = bigquery.QueryJobConfig(
 prefix = 'staging'
 file_name = 'trips-*.csv'
 
-utils.extract_from_query(client, table_ref, query_string, query_job_config, args.bucket, prefix, file_name)
+utils.extract_from_query(client, table_ref, query_string, query_job_config, args.bucket, prefix, file_name, delete_after=True)
 
 # Output
 staging_bucket = args.bucket + '/' + prefix

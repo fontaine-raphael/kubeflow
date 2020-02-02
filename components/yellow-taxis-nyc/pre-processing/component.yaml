@@ -9,5 +9,5 @@ implementation:
         command: [python3, /src/pre_processing.py]
         args: [
             --project, {inputValue: project},
-            --staging-bucket, {inputPath: staging_bucket}
+            --staging-bucket, {inputValue: staging_bucket}
         ]
