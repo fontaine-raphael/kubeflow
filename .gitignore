@@ -2,3 +2,5 @@
 .vscode
 kf-venv
 **/__pycache__
+**/output
+
