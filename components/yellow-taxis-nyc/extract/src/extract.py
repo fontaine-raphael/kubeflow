@@ -65,7 +65,7 @@ def main():
     prefix = 'staging'
     file_name = 'trips-*.csv'
 
-    utils.extract_from_query(client, table_ref, query_string, query_job_config, args.bucket, prefix, file_name, delete_after=True)
+    utils.extract_from_query(client, table_ref, query_string, query_job_config, args.bucket, prefix, file_name, delete_after=False)
 
     # Component Output(s)
     staging_bucket = args.bucket + '/' + prefix

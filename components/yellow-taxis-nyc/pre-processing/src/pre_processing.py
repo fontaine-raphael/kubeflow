@@ -1,6 +1,7 @@
 import argparse
 import logging
 
+from modules import transformations
 from modules import utils
 
 
@@ -35,11 +36,9 @@ def main():
 
     blobs = utils.list_blobs(client, bucket, prefix)
 
-    # Core program transformation pre-processing
+    # Core transformation program transformation
     for blob in blobs:
-        file_name = utils.download_blob(bucket, blob)
-        
-        utils.upload_blob(bucket, file_name, file_name.split('/')[-1])
+        transformations.entrypoint(args.project, bucket.id, blob)
 
 
 if __name__ == '__main__':

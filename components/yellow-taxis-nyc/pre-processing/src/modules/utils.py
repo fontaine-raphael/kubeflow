@@ -1,4 +1,3 @@
-# import gcsfs
 import logging
 import os
 
