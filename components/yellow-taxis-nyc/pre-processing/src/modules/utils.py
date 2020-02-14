@@ -80,10 +80,9 @@ def upload_blob(bucket, source_file_name, destination_blob_name):
 
     try:
         logging.info(f'Uploading blob {blob.name}...')
-
         blob.upload_from_filename(source_file_name)
     except:
-        logging.fatal(f'Error when trying to upload the blob {blob} to the bucket {bucket}')
+        logging.fatal(f'Error when trying to upload the blob {blob.name} to the bucket {bucket.name}')
         raise
 
     os.remove(source_file_name)  # Deletes the file after upload

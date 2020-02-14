@@ -3,4 +3,4 @@
 kf-venv
 **/__pycache__
 **/output
-
+**/tmp

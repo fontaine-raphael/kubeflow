@@ -10,7 +10,7 @@ outputs:
     - {name: staging_bucket, type: GCSPath, description: 'Bucket where sharded files are stored.'}
 implementation:
     container:
-        image: gcr.io/kubeflow-2020/yellow-taxis-nyc/extract:latest
+        image: gcr.io/kubeflow-xyz/yellow-taxis-nyc/extract:latest
         command: [python3, /src/extract.py]
         args: [
             --project, {inputValue: project},

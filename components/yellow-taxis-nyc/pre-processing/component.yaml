@@ -5,7 +5,7 @@ inputs:
     - {name: staging_bucket, type: GCSPath, description: 'Bucket where sharded files are stored.'}
 implementation:
     container:
-        image: gcr.io/kubeflow-2020/yellow-taxis-nyc/pre-processing:latest
+        image: gcr.io/kubeflow-xyz/yellow-taxis-nyc/pre-processing:latest
         command: [python3, /src/pre_processing.py]
         args: [
             --project, {inputValue: project},

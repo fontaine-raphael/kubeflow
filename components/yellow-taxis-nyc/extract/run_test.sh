@@ -13,5 +13,5 @@ python ./src/extract.py \
     --dataset "yellow_taxi" \
     --bucket "gs://yellow-taxi-nyc" \
     --start-date "2015-01-01" \
-    --end-date "2015-01-03" \
+    --end-date "2015-01-05" \
     --staging-bucket "output/staging_bucket"

@@ -38,7 +38,11 @@ def main():
 
     # Core transformation program transformation
     for blob in blobs:
-        transformations.entrypoint(args.project, bucket.id, blob)
+        source_file_name = transformations.entrypoint(args.project, bucket.id, blob)
+
+        destination_blob_name = source_file_name.split('/')[-1]
+
+        utils.upload_blob(bucket, source_file_name, destination_blob_name)
 
 
 if __name__ == '__main__':
