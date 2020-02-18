@@ -4,3 +4,5 @@ kf-venv
 **/__pycache__
 **/output
 **/tmp
+*.tar.gz
+

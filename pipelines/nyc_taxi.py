@@ -13,11 +13,11 @@ preprocessing_op = comp.load_component_from_file(os.path.join(preprocessing_path
 
 @dsl.pipeline(name='NYC Yellow Taxi Fare Predict', description='Pipeline to predict the fare amount of NYC Yellow Cab.')
 def nyc_taxi_pipeline(
-    project='kubeflow-2020',
-    dataset='kubeflow',
-    bucket='gs://kubeflow-2020-nyc',
+    project='kubeflow-xyz',
+    dataset='yellow_taxi',
+    bucket='gs://yellow-taxi-nyc',
     start_date='2015-01-01',
-    end_date='2015-01-01'
+    end_date='2015-01-05'
 ):
     extract = extract_op(
         project=project,
